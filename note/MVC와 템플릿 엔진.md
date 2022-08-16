@@ -1,0 +1,24 @@
+# MVC와 템플릿 엔진
+## MVC: Model, View, Controller
+
+
+Controller
+```java
+@Controller
+public class HelloController {
+    @GetMapping("hello-mvc")
+    public String helloMvc(@RequestParam("name") String name, Model model) {
+        model.addAttribute("name", name);
+        return "hello-template";
+    }
+}
+```
+
+View
+```html
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<p th:text="'hello ' + ${name}">hello! empty</p>
+</body>
+</html>
+```
