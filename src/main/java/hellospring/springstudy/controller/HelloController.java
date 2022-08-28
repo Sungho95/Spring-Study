@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HelloController {
 
-    // 정적 컨텐츠
+    // 동적 페이지
     @GetMapping("hello")
     public String hello(Model model) {
         model.addAttribute("data", "hello!!");
