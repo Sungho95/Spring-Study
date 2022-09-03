@@ -9,7 +9,7 @@ public interface MemberRepository {
     Member save(Member member); // 저장소에 저장
     // 저장소에 저장된 Id나 Name을 findById, findByName으로 찾아올 수 있음
     Optional<Member> findById(Long id);
-    Optional<Member> findByName(Long name);
+    Optional<Member> findByName(String name);
     // findAll을 하면 저장된 모든 정보를 리스트로 받아옴
     List<Member> findAll();
 }
