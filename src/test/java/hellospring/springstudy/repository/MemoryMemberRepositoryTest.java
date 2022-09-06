@@ -12,7 +12,6 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.*;
 
 class MemoryMemberRepositoryTest {
-
     MemoryMemberRepository repository = new MemoryMemberRepository();
 
     // 테스트 할 때마다 저장소를 지워주는 역할
