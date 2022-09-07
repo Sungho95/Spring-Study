@@ -7,6 +7,7 @@ import hellospring.springstudy.domain.repository.MemoryMemberRepository;
 import java.util.List;
 import java.util.Optional;
 
+// Ctr + shift + t 단축키를 통해 Create Test
 public class MemberService {
     private final MemberRepository memberRepository = new MemoryMemberRepository();
 
