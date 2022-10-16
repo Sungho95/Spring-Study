@@ -11,14 +11,14 @@ import java.util.Optional;
 
 // Ctr + shift + t 단축키를 통해 Create Test
 
-@Service // 스프링이 서비스임을 알게 해주는 어노테이션
+//@Service // 스프링이 서비스임을 알게 해주는 어노테이션
 //@Component
 public class MemberService {
     private final MemberRepository memberRepository;
 
     // 생성자에 @Autowired를 사용하면 객체 생성 시점에 스프링 컨테이너에서
     // 해당 스프링 빈을 찾아서 주입함. 생성자가 1개만 있을 경우 생략 가능
-    @Autowired
+//    @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }

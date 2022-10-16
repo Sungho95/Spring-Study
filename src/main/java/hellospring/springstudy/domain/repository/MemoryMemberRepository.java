@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
-@Repository // 리포지토리임을 알리는 어노테이션
+//@Repository // 리포지토리임을 알리는 어노테이션
 public class MemoryMemberRepository implements MemberRepository {
 
     // 다음과 같이 할 경우 동시성 문제를 고려해야 하나, 간단하게 예제를 진행
