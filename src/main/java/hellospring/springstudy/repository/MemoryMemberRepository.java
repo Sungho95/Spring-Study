@@ -1,4 +1,4 @@
-package hellospring.springstudy.domain.repository;
+package hellospring.springstudy.repository;
 
 import hellospring.springstudy.domain.Member;
 import org.springframework.stereotype.Repository;

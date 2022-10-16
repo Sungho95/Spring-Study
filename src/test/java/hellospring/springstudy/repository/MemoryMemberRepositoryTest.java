@@ -1,8 +1,6 @@
 package hellospring.springstudy.repository;
 
 import hellospring.springstudy.domain.Member;
-import hellospring.springstudy.domain.repository.MemberRepository;
-import hellospring.springstudy.domain.repository.MemoryMemberRepository;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
