@@ -4,33 +4,20 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
-@RestController("/mapping/users")
+@RestController
+@RequestMapping("/mapping/users")
 public class MappingController {
 
     private Logger log = LoggerFactory.getLogger(getClass());
 
-    @GetMapping
-    public String helloBasic() {
-        log.info("helloBasic");
-
-        return "ok";
-
-    }
-
-//    @GetMapping
-//    public String mappingGetV1() {
-//        log.info("mappingGetV1");
-//        return "ok";
-//    }
-//
-//    /**
-//     * 편리한 축약 애노테이션 (코드보기)
-//     * @GetMapping
-//     * @PostMapping
-//     * @PutMapping
-//     * @DeleteMapping
-//     * @PatchMapping
-//     */
+    /**
+     * 편리한 축약 애노테이션 (코드보기)
+     * @GetMapping
+     * @PostMapping
+     * @PutMapping
+     * @DeleteMapping
+     * @PatchMapping
+     */
 //    @GetMapping
 //    public String mappingGetV2() {
 //        log.info("mapping-get-v2");

@@ -30,14 +30,4 @@ public class LogTestController {
 
         return "ok";
     }
-
-    public static void main(String[] args) {
-        MultiValueMap<String, String> map = new LinkedMultiValueMap();
-        map.add("keyA", "value1");
-        map.add("keyA", "value2");
-
-        List<String> values = map.get("keyA");
-
-        System.out.println("values = " + values);
-    }
 }
