@@ -3,8 +3,12 @@ package hello.springmvc.basic;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -25,5 +29,15 @@ public class LogTestController {
         log.error("error log={}", name);
 
         return "ok";
+    }
+
+    public static void main(String[] args) {
+        MultiValueMap<String, String> map = new LinkedMultiValueMap();
+        map.add("keyA", "value1");
+        map.add("keyA", "value2");
+
+        List<String> values = map.get("keyA");
+
+        System.out.println("values = " + values);
     }
 }
