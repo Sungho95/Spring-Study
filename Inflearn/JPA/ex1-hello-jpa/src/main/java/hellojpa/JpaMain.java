@@ -129,10 +129,15 @@ public class JpaMain {
 //        emf.close();
 
         try {
-            Member member = new Member(200L, "member200");
-            em.persist(member);
+            Member member = em.find(Member.class, 150L);
+            member.setName("AAAAA");
 
-            em.flush(); // 강제 호출
+            // 준영속 상태가 되어 커밋 시에도 update가 발생하지 않는다.
+//            em.detach(member);
+            em.clear();
+
+            // 조회 쿼리가 2번 발생하게 됨.
+            Member member2 = em.find(Member.class, 150L);
 
             tx.commit();
         } catch (Exception e) {
