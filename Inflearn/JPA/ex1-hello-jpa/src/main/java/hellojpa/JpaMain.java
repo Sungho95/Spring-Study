@@ -114,11 +114,25 @@ public class JpaMain {
 //        }
 //        emf.close();
 
-        try {
-            Member member = em.find(Member.class, 150L);
-            member.setName("ZZZZZ");
+//        try {
+//            Member member = em.find(Member.class, 150L);
+//            member.setName("ZZZZZ");
+//
+////            em.persist(member);
+//
+//            tx.commit();
+//        } catch (Exception e) {
+//            tx.rollback();
+//        } finally {
+//            em.close();
+//        }
+//        emf.close();
 
-//            em.persist(member);
+        try {
+            Member member = new Member(200L, "member200");
+            em.persist(member);
+
+            em.flush(); // 강제 호출
 
             tx.commit();
         } catch (Exception e) {
