@@ -95,17 +95,31 @@ public class JpaMain {
 //        }
 //        emf.close();
 
+//        try {
+//            // 쿼리 문을 통해 조회 후 1차 캐시에 저장
+//            Member findMember1 = em.find(Member.class, 101L);
+//            // 영속성 컨텍스트의 1차 캐시에서 바로 조회
+//            Member findMember2 = em.find(Member.class, 101L);
+//            // 따라서 쿼리문은 1번만 실행하게 됨.
+//
+//            // true : 동일성 보장
+//            System.out.println("result = " + (findMember1 == findMember2));
+//
+//            // 커밋 하는 순간에 데이터베이스에 보냄.
+//            tx.commit();
+//        } catch (Exception e) {
+//            tx.rollback();
+//        } finally {
+//            em.close();
+//        }
+//        emf.close();
+
         try {
-            // 쿼리 문을 통해 조회 후 1차 캐시에 저장
-            Member findMember1 = em.find(Member.class, 101L);
-            // 영속성 컨텍스트의 1차 캐시에서 바로 조회
-            Member findMember2 = em.find(Member.class, 101L);
-            // 따라서 쿼리문은 1번만 실행하게 됨.
+            Member member = em.find(Member.class, 150L);
+            member.setName("ZZZZZ");
 
-            // true : 동일성 보장
-            System.out.println("result = " + (findMember1 == findMember2));
+//            em.persist(member);
 
-            // 커밋 하는 순간에 데이터베이스에 보냄.
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
