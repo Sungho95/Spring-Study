@@ -1,0 +1,72 @@
+package hello.jdbc.service;
+
+import hello.jdbc.domain.Member;
+import hello.jdbc.repository.MemberRepositoryV3;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
+import org.springframework.transaction.support.TransactionTemplate;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+// 트랜잭션은 어떤 계층? 어디에 시작하고 어디에 끝나야하는가?가 중요함.
+// 트랜잭션은 커넥션이 필요하며, 트랜잭션을 사용하는 동안 같은 커넥션을 유지해야함.
+
+/**
+ * 트랜잭션 - 트랜잭션 템플릿
+ */
+@Slf4j
+public class MemberServiceV3_2 {
+
+//    private final PlatformTransactionManager transactionManager;
+    private final TransactionTemplate txTemplate;
+    private final MemberRepositoryV3 memberRepository;
+
+    public MemberServiceV3_2(PlatformTransactionManager transactionManager, MemberRepositoryV3 memberRepository) {
+        this.txTemplate = new TransactionTemplate(transactionManager);
+        this.memberRepository = memberRepository;
+    }
+
+    public void accountTransfer(String fromId, String toId, int money) throws SQLException {
+
+        // 트랜잭션 템프릸 사용
+        txTemplate.executeWithoutResult((status) -> {
+            // 비즈니스 로직
+            try {
+                bizLogic(fromId, toId, money);
+            } catch (SQLException e) {
+                throw new IllegalStateException(e);
+            }
+        });
+
+    }
+
+    private void bizLogic(String fromId, String toId, int money) throws SQLException {
+        Member fromMember = memberRepository.findById(fromId);
+        Member toMember = memberRepository.findById(toId);
+
+        memberRepository.update(fromId, fromMember.getMoney() - money);
+        validation(toMember);
+        memberRepository.update(toId, toMember.getMoney() + money);
+    }
+
+    private static void release(Connection con) {
+        if (con != null) {
+            try {
+                con.setAutoCommit(true); // 커넥션 풀 고려
+                con.close();
+            } catch (Exception e) {
+                log.info("error", e); // 예외를 로그로 남길 때에는 {}로 감싸지 않음.
+            }
+        }
+    }
+
+    private static void validation(Member toMember) {
+        if (toMember.getMemberId().equals("ex")) {
+            throw new IllegalStateException("이체중 예외 발생");
+        }
+    }
+}
