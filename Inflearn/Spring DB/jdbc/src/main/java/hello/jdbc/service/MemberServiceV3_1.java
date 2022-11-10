@@ -8,7 +8,6 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 
 // 트랜잭션은 어떤 계층? 어디에 시작하고 어디에 끝나야하는가?가 중요함.
@@ -47,17 +46,6 @@ public class MemberServiceV3_1 {
         memberRepository.update(fromId, fromMember.getMoney() - money);
         validation(toMember);
         memberRepository.update(toId, toMember.getMoney() + money);
-    }
-
-    private static void release(Connection con) {
-        if (con != null) {
-            try {
-                con.setAutoCommit(true); // 커넥션 풀 고려
-                con.close();
-            } catch (Exception e) {
-                log.info("error", e); // 예외를 로그로 남길 때에는 {}로 감싸지 않음.
-            }
-        }
     }
 
     private static void validation(Member toMember) {
