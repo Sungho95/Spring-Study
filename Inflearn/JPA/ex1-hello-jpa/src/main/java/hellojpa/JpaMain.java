@@ -15,6 +15,29 @@ public class JpaMain {
         EntityTransaction tx = em.getTransaction();
         tx.begin();
 
+        try {
+//            Member member = new Member();
+//            member.setId(1L);
+//            member.setUsername("A");
+//            member.setRoleType(RoleType.USER);
+
+            Member member = new Member();
+            member.setId(2L);
+            member.setUsername("A");
+            member.setRoleType(RoleType.ADMIN);
+
+            em.persist(member);
+
+            tx.commit();
+        } catch (Exception e) {
+            tx.rollback();
+        } finally {
+            em.close();
+        }
+        emf.close();
+    }
+}
+
         // 등록
 //        try {
 //            Member member = new Member();
@@ -128,25 +151,23 @@ public class JpaMain {
 //        }
 //        emf.close();
 
-        try {
-            Member member = em.find(Member.class, 150L);
-            member.setName("AAAAA");
-
-            // 준영속 상태가 되어 커밋 시에도 update가 발생하지 않는다.
-//            em.detach(member);
-            em.clear();
-
-            // 조회 쿼리가 2번 발생하게 됨.
-            Member member2 = em.find(Member.class, 150L);
-
-            tx.commit();
-        } catch (Exception e) {
-            tx.rollback();
-        } finally {
-            em.close();
-        }
-        emf.close();
-
-
-    }
-}
+//        try {
+//            Member member = em.find(Member.class, 150L);
+//            member.setName("AAAAA");
+//
+//            // 준영속 상태가 되어 커밋 시에도 update가 발생하지 않는다.
+////            em.detach(member);
+//            em.clear();
+//
+//            // 조회 쿼리가 2번 발생하게 됨.
+//            Member member2 = em.find(Member.class, 150L);
+//
+//            tx.commit();
+//        } catch (Exception e) {
+//            tx.rollback();
+//        } finally {
+//            em.close();
+//        }
+//        emf.close();
+//    }
+//}
