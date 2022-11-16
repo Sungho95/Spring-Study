@@ -16,17 +16,12 @@ public class JpaMain {
         tx.begin();
 
         try {
-//            Member member = new Member();
-//            member.setId(1L);
-//            member.setUsername("A");
-//            member.setRoleType(RoleType.USER);
-
             Member member = new Member();
-            member.setId(2L);
-            member.setUsername("A");
-            member.setRoleType(RoleType.ADMIN);
+            member.setUsername("Hello");
 
+            System.out.println("member.getId() = " + member.getId());
             em.persist(member);
+            System.out.println("member.getId() = " + member.getId());
 
             tx.commit();
         } catch (Exception e) {
@@ -37,6 +32,29 @@ public class JpaMain {
         emf.close();
     }
 }
+
+//        try {
+////            Member member = new Member();
+////            member.setId(1L);
+////            member.setUsername("A");
+////            member.setRoleType(RoleType.USER);
+//
+//            Member member = new Member();
+//            member.setId(2L);
+//            member.setUsername("A");
+//            member.setRoleType(RoleType.ADMIN);
+//
+//            em.persist(member);
+//
+//            tx.commit();
+//        } catch (Exception e) {
+//            tx.rollback();
+//        } finally {
+//            em.close();
+//        }
+//        emf.close();
+//    }
+//}
 
         // 등록
 //        try {
