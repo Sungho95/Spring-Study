@@ -1,6 +1,8 @@
 package jpabook.jpabook.jpashop.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Member {
@@ -14,6 +16,9 @@ public class Member {
     private String city;
 
     private String zipcode;
+
+    @OneToMany(mappedBy = "member")
+    private List<Order> orders = new ArrayList<>(); // 관례상 new ArrayList<>() 사용 : NPE 방지 등의 장점이 존재
 
     public Long getId() {
         return id;
