@@ -16,30 +16,25 @@ public class JpaMain {
         tx.begin();
 
         try {
-            //팀 저장
             Team team = new Team();
             team.setName("TeamA");
             em.persist(team);
 
-            //회원 저장
             Member member = new Member();
             member.setName("member1");
-            member.setTeam(team); //단방향 연관관계 설정, 참조 저장
+//            member.changeTeam(team);
+            team.addMember(member);
             em.persist(member);
 
-            // Member의 팀을 조회하고자 하는 경우
-            Member findMember = em.find(Member.class, member.getId());
-            // findMember를 통해 Team 객체를 바로 조회 가능
-            Team findTeam = findMember.getTeam();
-            System.out.println("findTeam = " + findTeam.getId());
-            System.out.println("findTeam = " + findTeam.getName());
+            Team findTeam = em.find(Team.class, team.getId());
+            List<Member> members = findTeam.getMembers();
 
-            Team team2 = new Team();
-            team2.setName("TeamB");
-            em.persist(team2);
+//            System.out.println("members = " + findTeam);
+            System.out.println("members = " + member);
 
-            Team findTeam2 = em.find(Team.class, 2L);
-            findMember.setTeam(findTeam2);
+            for (Member m : members) {
+                System.out.println("m = " + m.getName());
+            }
 
             tx.commit();
         } catch (Exception e) {
@@ -50,6 +45,41 @@ public class JpaMain {
         emf.close();
     }
 }
+
+//        try {
+//            //팀 저장
+//            Team team = new Team();
+//            team.setName("TeamA");
+//            em.persist(team);
+//
+//            //회원 저장
+//            Member member = new Member();
+//            member.setName("member1");
+//            member.setTeam(team); //단방향 연관관계 설정, 참조 저장
+//            em.persist(member);
+//
+//            // DB 반영
+//            em.flush();
+//            // 영속성 컨텍스트 초기화
+//            em.clear();
+//
+//            // Team 객체를 통해 members 조회
+//            Member findMember = em.find(Member.class, member.getId());
+//            List<Member> members = findMember.getTeam().getMembers();
+//
+//            for (Member m : members) {
+//                System.out.println("m = " + m.getName());
+//            }
+//
+//            tx.commit();
+//        } catch (Exception e) {
+//            tx.rollback();
+//        } finally {
+//            em.close();
+//        }
+//        emf.close();
+//    }
+//}
 
 //        try {
 //            Team team = new Team();
