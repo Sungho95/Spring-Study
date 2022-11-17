@@ -16,12 +16,30 @@ public class JpaMain {
         tx.begin();
 
         try {
-            Member member = new Member();
-            member.setUsername("Hello");
+            //팀 저장
+            Team team = new Team();
+            team.setName("TeamA");
+            em.persist(team);
 
-            System.out.println("member.getId() = " + member.getId());
+            //회원 저장
+            Member member = new Member();
+            member.setName("member1");
+            member.setTeam(team); //단방향 연관관계 설정, 참조 저장
             em.persist(member);
-            System.out.println("member.getId() = " + member.getId());
+
+            // Member의 팀을 조회하고자 하는 경우
+            Member findMember = em.find(Member.class, member.getId());
+            // findMember를 통해 Team 객체를 바로 조회 가능
+            Team findTeam = findMember.getTeam();
+            System.out.println("findTeam = " + findTeam.getId());
+            System.out.println("findTeam = " + findTeam.getName());
+
+            Team team2 = new Team();
+            team2.setName("TeamB");
+            em.persist(team2);
+
+            Team findTeam2 = em.find(Team.class, 2L);
+            findMember.setTeam(findTeam2);
 
             tx.commit();
         } catch (Exception e) {
@@ -32,6 +50,52 @@ public class JpaMain {
         emf.close();
     }
 }
+
+//        try {
+//            Team team = new Team();
+//            team.setName("TeamA");
+//            em.persist(team);
+//
+//            Member member = new Member();
+//            member.setName("member1");
+//            member.setTeamId(team.getId());
+//            em.persist(member);
+//
+//            // Member의 팀을 조회하고자 하는 경우
+//            Member findMember = em.find(Member.class, member.getId());
+//
+//            Long findTeamId = findMember.getTeamId();
+//
+//            // 연관관계가 없음
+//            Team findTeam = em.find(Team.class, team.getId());
+//
+//            tx.commit();
+//        } catch (Exception e) {
+//            tx.rollback();
+//        } finally {
+//            em.close();
+//        }
+//        emf.close();
+//    }
+//}
+
+//        try {
+//            Member member = new Member();
+//            member.setUsername("Hello");
+//
+//            System.out.println("member.getId() = " + member.getId());
+//            em.persist(member);
+//            System.out.println("member.getId() = " + member.getId());
+//
+//            tx.commit();
+//        } catch (Exception e) {
+//            tx.rollback();
+//        } finally {
+//            em.close();
+//        }
+//        emf.close();
+//    }
+//}
 
 //        try {
 ////            Member member = new Member();
