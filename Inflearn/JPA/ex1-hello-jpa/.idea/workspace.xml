@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="486243ac-a05f-4092-af68-f4723ac3ce21" name="Changes" comment="2022-11-20 다양한 연관관계 매핑">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jpa-buddy.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__antlr_antlr_2_7_7.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_5_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_h2database_h2_1_4_200.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_istack_istack_commons_runtime_3_0_7.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_xml_fastinfoset_FastInfoset_1_2_15.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_activation_javax_activation_api_1_2_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_persistence_javax_persistence_api_2_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_xml_bind_jaxb_api_2_3_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_12_9.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jaxb_jaxb_runtime_2_3_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jaxb_txw2_2_3_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_common_hibernate_commons_annotations_5_1_2_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_core_5_6_12_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_entitymanager_5_6_12_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_jandex_2_4_2_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_4_3_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_spec_javax_transaction_jboss_transaction_api_1_2_spec_1_1_1_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jvnet_staxex_stax_ex_1_8.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex1-hello-jpa.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hellojpa/JpaMain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hellojpa/Locker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hellojpa/Member.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hellojpa/MemberProduct.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hellojpa/Product.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hellojpa/RoleType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hellojpa/Team.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/persistence.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hellojpa/JpaMain.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hellojpa/Member.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hellojpa/RoleType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jpashop/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jpashop/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jpashop/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jpashop/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jpashop/.idea/jpa-buddy.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jpashop/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jpashop/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jpashop/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jpashop/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jpashop/src/main/java/jpabook/jpabook/JpaMain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jpashop/src/main/java/jpabook/jpabook/jpashop/domain/Category.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jpashop/src/main/java/jpabook/jpabook/jpashop/domain/Delivery.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jpashop/src/main/java/jpabook/jpabook/jpashop/domain/DeliveryStatus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jpashop/src/main/java/jpabook/jpabook/jpashop/domain/Item.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jpashop/src/main/java/jpabook/jpabook/jpashop/domain/Member.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jpashop/src/main/java/jpabook/jpabook/jpashop/domain/Order.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jpashop/src/main/java/jpabook/jpabook/jpashop/domain/OrderItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jpashop/src/main/java/jpabook/jpabook/jpashop/domain/OrderStatus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jpashop/src/main/resources/META-INF/persistence.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jpashop/target/classes/META-INF/persistence.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jpashop/target/classes/jpabook/jpabook/JpaMain.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jpashop/target/classes/jpabook/jpabook/jpashop/domain/Item.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jpashop/target/classes/jpabook/jpabook/jpashop/domain/Member.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jpashop/target/classes/jpabook/jpabook/jpashop/domain/Order.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jpashop/target/classes/jpabook/jpabook/jpashop/domain/OrderItem.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jpashop/target/classes/jpabook/jpabook/jpashop/domain/OrderStatus.class" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/../../.." value="brench1" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="true" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="false" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="false" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="false" />
+      </map>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2Gu0zEjYEj5cQWzMAUl747QJukf" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/git/spring-study/Inflearn/JPA/ex1-hello-jpa/ex1-hello-jpa",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="hellojpa" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="JpaMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="hellojpa.JpaMain" />
+      <module name="ex1-hello-jpa" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="hellojpa.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.JpaMain" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="486243ac-a05f-4092-af68-f4723ac3ce21" name="Changes" comment="" />
+      <created>1667223422974</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1667223422974</updated>
+      <workItem from="1667223425385" duration="314000" />
+      <workItem from="1667223758524" duration="3433000" />
+      <workItem from="1667229154108" duration="257000" />
+      <workItem from="1667306254054" duration="6143000" />
+      <workItem from="1667318974417" duration="32000" />
+      <workItem from="1667348844917" duration="19000" />
+      <workItem from="1668497563102" duration="2188000" />
+      <workItem from="1668514335216" duration="8464000" />
+      <workItem from="1668559246773" duration="7129000" />
+      <workItem from="1668603227424" duration="1814000" />
+      <workItem from="1668615522807" duration="3412000" />
+      <workItem from="1668645895382" duration="14727000" />
+      <workItem from="1668735256271" duration="18000" />
+      <workItem from="1668944978558" duration="7607000" />
+    </task>
+    <task id="LOCAL-00001" summary="2022-11-01 HelloJPA">
+      <created>1667229029959</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1667229029959</updated>
+    </task>
+    <task id="LOCAL-00002" summary="2022-11-01 HelloJPA">
+      <created>1667229356894</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1667229356894</updated>
+    </task>
+    <task id="LOCAL-00003" summary="2022-11-01 영속성 컨텍스트">
+      <created>1667310451857</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1667310451857</updated>
+    </task>
+    <task id="LOCAL-00004" summary="2022-11-01 영속성 컨텍스트2">
+      <created>1667317125449</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1667317125449</updated>
+    </task>
+    <task id="LOCAL-00005" summary="2022-11-02 플러시">
+      <created>1667318623145</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1667318623145</updated>
+    </task>
+    <task id="LOCAL-00006" summary="2022-11-02 준영속 상태">
+      <created>1667318994025</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1667318994025</updated>
+    </task>
+    <task id="LOCAL-00007" summary="2022-11-16 객체와 테이블 매핑 및 필드와 컬럼 매핑">
+      <created>1668533400177</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1668533400177</updated>
+    </task>
+    <task id="LOCAL-00008" summary="2022-11-16 기본키 매핑">
+      <created>1668602784994</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1668602784994</updated>
+    </task>
+    <task id="LOCAL-00009" summary="2022-11-16 단방향 매핑">
+      <created>1668669967790</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1668669967790</updated>
+    </task>
+    <task id="LOCAL-00010" summary="2022-11-18 양방향 매핑과 mappedBy">
+      <created>1668702167193</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1668702167193</updated>
+    </task>
+    <task id="LOCAL-00011" summary="2022-11-20 다양한 연관관계 매핑">
+      <created>1668953822246</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1668953822246</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="2022-11-01 HelloJPA" />
+    <MESSAGE value="2022-11-01 영속성 컨텍스트" />
+    <MESSAGE value="2022-11-01 영속성 컨텍스트2" />
+    <MESSAGE value="2022-11-01 플러시" />
+    <MESSAGE value="2022-11-02 플러시" />
+    <MESSAGE value="2022-11-02 준영속 상태" />
+    <MESSAGE value="2022-11-16 객체와 테이블 매핑 및 필드와 컬럼 매핑" />
+    <MESSAGE value="2022-11-16 기본키 매핑" />
+    <MESSAGE value="2022-11-16 단방향 매핑" />
+    <MESSAGE value="2022-11-18 양방향 매핑과 mappedBy" />
+    <MESSAGE value="2022-11-20 다양한 연관관계 매핑" />
+    <option name="LAST_COMMIT_MESSAGE" value="2022-11-20 다양한 연관관계 매핑" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
