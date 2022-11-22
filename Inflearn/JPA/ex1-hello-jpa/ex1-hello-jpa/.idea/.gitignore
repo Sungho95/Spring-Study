@@ -6,3 +6,4 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+/Inflearn/JPA/ex1-hello-jpa/ex1-hello-jpa/target/
