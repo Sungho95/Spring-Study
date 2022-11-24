@@ -15,21 +15,26 @@ public class JpaMain {
         tx.begin();
 
         try {
+            Address address = new Address("city", "street", "10000");
 
-            Child child1 = new Child();
-            Child child2 = new Child();
+            Member member1 = new Member();
+            member1.setName("member1");
+            member1.setHomeAddress(address);
+            em.persist(member1);
 
-            Parent parent = new Parent();
-            parent.addChild(child1);
-            parent.addChild(child2);
+            Address newAddress = new Address("NewCity", address.getStreet(), address.getZipcode());
+            member1.setHomeAddress(newAddress);
 
-            em.persist(parent);
 
-            em.flush();
-            em.clear();
+            Address copyAddress = new Address(address.getCity(), address.getStreet(), address.getZipcode());
 
-            Parent findParent = em.find(Parent.class, parent.getId());
-            em.remove(findParent);
+            Member member2 = new Member();
+            member2.setName("member2");
+            member2.setHomeAddress(copyAddress);
+            em.persist(member2);
+
+//            // setter를 사용할 수 없도록 해야함
+//            member1.getHomeAddress().setCity("newCity");
 
             tx.commit();
         } catch (Exception e) {
