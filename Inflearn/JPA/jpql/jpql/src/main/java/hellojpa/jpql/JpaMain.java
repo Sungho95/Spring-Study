@@ -1,6 +1,7 @@
 package hellojpa.jpql;
 
 import javax.persistence.*;
+import java.util.List;
 
 public class JpaMain {
     public static void main(String[] args) {
@@ -18,23 +19,15 @@ public class JpaMain {
             member.setAge(10);
             em.persist(member);
 
-            Member result = em.createQuery("select m from Member m where m.username = :username", Member.class)
-                            .setParameter("username", "member1")
-                            .getSingleResult();
+            em.flush();
+            em.clear();
 
-            System.out.println("result = " + result.getUsername());
+            List<MemberDTO> result = em.createQuery("select new hellojpa.jpql.MemberDTO(m.username, m.age) from Member m", MemberDTO.class)
+                    .getResultList();
 
-//            TypedQuery<Member> query1 = em.createQuery("select m from Member m", Member.class);
-//            List<Member> resultList = query1.getResultList();
-//
-//            for (Member m : resultList) {
-//                System.out.println("m = " + m.getUsername());
-//
-//            }
-//
-//            TypedQuery<Member> query2 = em.createQuery("select m from Member m where m.id = 1L", Member.class);
-//            Member singleResult = query2.getSingleResult();
-//            System.out.println("singleResult = " + singleResult.getUsername());
+            MemberDTO memberDTO = result.get(0);
+            System.out.println("memberDTO = " + memberDTO.getUsername());
+            System.out.println("memberDTO = " + memberDTO.getAge());
 
             tx.commit();
         } catch (Exception e) {
