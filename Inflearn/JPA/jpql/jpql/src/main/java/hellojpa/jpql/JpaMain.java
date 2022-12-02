@@ -13,25 +13,31 @@ public class JpaMain {
         tx.begin();
 
         try {
+            Team team = new Team();
+            team.setName("teamA");
+            em.persist(team);
 
-            for (int i = 0; i < 100; i++) {
-                Member member = new Member();
-                member.setUsername("member" + i);
-                member.setAge(i);
-                em.persist(member);
-            }
+            Member member = new Member();
+            member.setUsername("teamA");
+            member.setAge(10);
+            member.setTeam(team);
+            em.persist(member);
 
             em.flush();
             em.clear();
 
-            List<Member> result = em.createQuery("select m from Member m order by m.age desc", Member.class)
-                    .setFirstResult(0)
-                    .setMaxResults(10)
-                    .getResultList();
+            String jpql = "select t from Team t join fetch t.members where t.name = 'teamA'";
 
-            System.out.println("result.size() = " + result.size());
-            for (Member member : result) {
-                System.out.println("member = " + member);
+            List<Team> teams = em.createQuery(jpql, Team.class).getResultList();
+
+            for (Team team1 : teams) {
+                System.out.println("teamname = " + team1.getName() + ", " +
+                        "team = " + team1);
+
+                for (Member member1 : team1.getMembers()) {
+                    System.out.println("->username = " + member1.getUsername() + ", " +
+                        "member = " + member1);
+                }
             }
 
             tx.commit();
