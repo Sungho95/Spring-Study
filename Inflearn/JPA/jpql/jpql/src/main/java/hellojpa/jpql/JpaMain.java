@@ -26,6 +26,7 @@ public class JpaMain {
             em.flush();
             em.clear();
 
+            // 페치 조인
             String jpql = "select t from Team t join fetch t.members where t.name = 'teamA'";
 
             List<Team> teams = em.createQuery(jpql, Team.class).getResultList();
