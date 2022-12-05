@@ -14,30 +14,30 @@ public class JpaMain {
 
         try {
             Team team = new Team();
-            team.setName("teamA");
+            team.setName("team1");
             em.persist(team);
 
             Member member = new Member();
-            member.setUsername("teamA");
+            member.setUsername("member1");
             member.setAge(10);
             member.setTeam(team);
+            member.setType(MemberType.ADMIN);
             em.persist(member);
 
             em.flush();
             em.clear();
 
-            String jpql = "select t from Team t join fetch t.members where t.name = 'teamA'";
+            String query = "select m.username, 'HELLO', TRUE, false from Member m where m.type = :userType";
 
-            List<Team> teams = em.createQuery(jpql, Team.class).getResultList();
+            List<Object[]> result = em.createQuery(query)
+                    .setParameter("userType", MemberType.ADMIN)
+                    .getResultList();
 
-            for (Team team1 : teams) {
-                System.out.println("teamname = " + team1.getName() + ", " +
-                        "team = " + team1);
-
-                for (Member member1 : team1.getMembers()) {
-                    System.out.println("->username = " + member1.getUsername() + ", " +
-                        "member = " + member1);
-                }
+            for (Object[] objects : result) {
+                System.out.println("objects[0] = " + objects[0]);
+                System.out.println("objects[1] = " + objects[1]);
+                System.out.println("objects[2] = " + objects[2]);
+                System.out.println("objects[3] = " + objects[3]);
             }
 
             tx.commit();
