@@ -17,28 +17,32 @@ public class JpaMain {
             team.setName("team1");
             em.persist(team);
 
-            Member member = new Member();
-            member.setUsername("관리자");
-            member.setAge(10);
-            member.setTeam(team);
-            member.setType(MemberType.ADMIN);
-            em.persist(member);
+            Member member1 = new Member();
+            member1.setUsername("관리자1");
+            member1.setAge(10);
+            member1.setTeam(team);
+            member1.setType(MemberType.ADMIN);
+            em.persist(member1);
+
+            Member member2 = new Member();
+            member2.setUsername("관리자2");
+            member2.setAge(10);
+            member2.setTeam(team);
+            member2.setType(MemberType.ADMIN);
+            em.persist(member2);
 
             em.flush();
             em.clear();
 
-//            String query = "select concat('a', 'b') from Member m";
+            String query = "select m.team.name From Member m";
 
-//            String query = "select substring(m.username, 2, 3) from Member m";
+            List<String> result = em.createQuery(query, String.class).getResultList();
 
-            String query = "select locate('de', 'abcdefg') from Member m";
-
-            List<Integer> result = em.createQuery(query, Integer.class)
-                            .getResultList();
-
-            for (Integer s : result) {
+            for (String s : result) {
                 System.out.println("s = " + s);
             }
+
+
 
             tx.commit();
         } catch (Exception e) {
