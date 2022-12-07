@@ -42,18 +42,28 @@ public class JpaMain {
             member3.setType(MemberType.ADMIN);
             em.persist(member3);
 
-            em.flush();
+            // FLUSH
+            int resultCount = em.createQuery("update Member m set m.age = 20")
+                    .executeUpdate();
+            System.out.println("resultCount = " + resultCount);
+
+//            // 1. em.refresh()
+//            em.refresh(member1);
+//            em.refresh(member2);
+//            em.refresh(member3);
+//
+//            System.out.println("member1 = " + member1.getAge());
+//            System.out.println("member2 = " + member2.getAge());
+//            System.out.println("member3 = " + member3.getAge());
+
+            // 2. 영속성 컨텍스트 초기화
             em.clear();
 
-            String query = "select m from Member m where m.team.id = :teamId";
+            Member findMember = em.find(Member.class, member1.getId());
 
-            List<Member> members = em.createQuery(query, Member.class)
-                    .setParameter("teamId", teamA.getId())
-                    .getResultList();
+            System.out.println("findMember.getAge() = " + findMember.getAge());
 
-            for (Member member : members) {
-                System.out.println("member = " + member);
-            }
+
 
             tx.commit();
         } catch (Exception e) {
