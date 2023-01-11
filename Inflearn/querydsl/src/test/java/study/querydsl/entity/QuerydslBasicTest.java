@@ -1,5 +1,6 @@
 package study.querydsl.entity;
 
+import com.querydsl.core.QueryResults;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,6 +10,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static study.querydsl.entity.QMember.member;
@@ -104,6 +107,41 @@ public class QuerydslBasicTest {
 
         assertThat(findMember.getUsername()).isEqualTo("member1");
         assertThat(findMember.getAge()).isEqualTo(10);
+
+    }
+
+    @Test
+    public void resultFetch() throws Exception {
+//        List<Member> fetch = queryFactory
+//                .selectFrom(member)
+//                .fetch();
+//
+//        Member fetchOne = queryFactory
+//                .selectFrom(member)
+//                .fetchOne();
+//
+//        Member fetchFi = queryFactory
+//                .selectFrom(member)
+//                .fetchFirst();
+
+//        QueryResults<Member> results = queryFactory
+//                .selectFrom(member)
+//                .fetchResults();
+//
+//        long total = results.getTotal(); // 총 개수
+//        List<Member> content = results.getResults(); // 데이터 리스트
+//        long offset = results.getOffset(); // 페이징 시 사용할 수 있는 offset
+//        System.out.println(total);
+//
+//        for (Member m : content) {
+//            System.out.println("m = " + m);
+//        }
+
+        long total = queryFactory
+                .selectFrom(member)
+                .fetchCount();
+
+        System.out.println(total);
 
     }
 
