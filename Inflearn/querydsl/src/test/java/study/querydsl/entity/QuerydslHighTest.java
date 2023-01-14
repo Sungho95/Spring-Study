@@ -13,6 +13,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 import study.querydsl.dto.MemberDto;
 import study.querydsl.dto.QMemberDto;
@@ -310,4 +311,70 @@ public class QuerydslHighTest {
     private BooleanExpression allEq(String usernameCond, Integer ageCond) {
         return usernameEq(usernameCond).and(ageEq(ageCond));
     }
+
+    /**
+     * 벌크 연산
+     * 주의할 점
+     * - 벌크 연산 수행 후 영속성 컨텍스트 내용과 DB의 내용이 다름
+     */
+    @Test
+    public void bulkUpdate() throws Exception {
+
+        // 실행 전
+        // member1 = 10 -> member1
+        // member2 = 20 -> member2
+        // member3 = 30 -> member3
+        // member4 = 40 -> member4
+
+        long count = queryFactory
+                .update(member)
+                .set(member.username, "비회원")
+                .where(member.age.lt(28))
+                .execute();
+
+        // DB                             영속성 컨텍스트
+        // member1 = 10 -> 비회원          member1 = 10 -> member1
+        // member2 = 20 -> 비회원          member2 = 20 -> member2
+        // member3 = 30 -> member3        member3 = 30 -> member3
+        // member4 = 40 -> member4        member4 = 40 -> member4
+
+//        List<Member> result = queryFactory
+//                .selectFrom(member)
+//                .fetch();
+//
+//        // member1과 member2의 이름이 변경된 상태로 출력되지 않음
+//        for (Member member1 : result) {
+//            System.out.println("member1 = " + member1);
+//        }
+
+        // 벌크 연산 시에는 항상 flush()와 clear()를 사용하자.
+        em.flush();
+        em.clear();
+
+        List<Member> result2 = queryFactory
+                .selectFrom(member)
+                .fetch();
+
+        for (Member member1 : result2) {
+            System.out.println("member1 = " + member1);
+        }
+    }
+
+    @Test
+    public void bulkAdd() throws Exception {
+
+        long count = queryFactory
+                .update(member)
+                .set(member.age, member.age.add(1)) // add(-1)
+                .execute();
+    }
+
+    @Test
+    public void bulkDelete() throws Exception {
+        queryFactory
+                .delete(member)
+                .where(member.age.gt(18))
+                .execute();
+    }
+
 }
