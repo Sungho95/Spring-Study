@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 import study.querydsl.dto.MemberDto;
+import study.querydsl.dto.QMemberDto;
 import study.querydsl.dto.UserDto;
 
 import javax.persistence.EntityManager;
@@ -207,6 +208,29 @@ public class QuerydslHighTest {
 
         for (UserDto userDto : result) {
             System.out.println("userDto = " + userDto);
+        }
+    }
+
+    /**
+     * @QueruProjection
+     * - DTO에 @QueryProjection 어노테이션을 붙여서 사용
+     * 장점
+     * - 컴파일 오류를 발생하여 실행 전에 에러를 잡을 수 있다.
+     * 단점
+     * - Q 파일을 생성해야 한다.
+     * - QueryProjection 어노테이션으로 인한 의존성 문제가 발생함.
+     * - 해당 DTO는 querydsl에 의존하게 됨. (설계 관점에서 좋지 못한 상태)
+     */
+    @Test
+    public void findDtoByQueryProjection() throws Exception {
+
+        List<MemberDto> result = queryFactory
+                .select(new QMemberDto(member.username, member.age))
+                .from(member)
+                .fetch();
+
+        for (MemberDto memberDto : result) {
+            System.out.println("memberDto = " + memberDto);
         }
     }
 
