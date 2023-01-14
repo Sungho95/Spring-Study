@@ -174,12 +174,15 @@ public class QuerydslBasicTest {
 
     }
 
+    /**
+     * 페이징
+     */
     @Test
     public void paging1() throws Exception {
         List<Member> result = queryFactory
                 .selectFrom(member)
                 .orderBy(member.username.desc())
-                .offset(1)
+                .offset(1) // 시작 인덱스(0)부터
                 .limit(2)
                 .fetch();
 
@@ -256,7 +259,7 @@ public class QuerydslBasicTest {
 
         List<Member> result = queryFactory
                 .selectFrom(member)
-                .join(member.team, team)
+                .join(member.team, team) // innerjoin
                 .where(team.name.eq("teamA"))
                 .fetch();
 
@@ -265,6 +268,9 @@ public class QuerydslBasicTest {
                 .containsExactly("member1", "member2");
 
     }
+
+    // JPQL -> 빌더형태로 사용하는느낌이
+    // Querydsl -> JPQL의 모든 기능을 따른다.
 
     @Test
     public void leftJoin() throws Exception {
@@ -286,7 +292,7 @@ public class QuerydslBasicTest {
      * 회원의 이름이 팀 이름과 같은 회원 조회
      */
     @Test
-    public void theta_join() throws Exception {
+    public void theta_join() throws Exception { // 막 조인 JPA강의 -> JPQL
 
         em.persist(new Member("teamA"));
         em.persist(new Member("teamB"));
@@ -303,5 +309,76 @@ public class QuerydslBasicTest {
                 .containsExactly("teamA", "teamB");
 
     }
+
+    /**
+     * 회원과 팀을 조인하고, 팀 이름이 teamA인 팀만 조인, 회원은 모두 조회
+     * JPQL : select m, t from Member m left join m.team t on t.name = 'teamA'
+     */
+    @Test
+    public void join_on_filtering() throws Exception {
+
+        List<Tuple> result = queryFactory
+                .select(member, team)
+                .from(member)
+                .leftJoin(member.team, team).on(team.name.eq("teamA"))
+                .fetch();
+
+        for (Tuple tuple : result) {
+            System.out.println("tuple = " + tuple);
+        }
+
+    }
+    /**
+     * inner 조인의 경우 where절을 통해 필터링 하는 결과와 같다.
+     */
+    @Test
+    public void join_on_filtering2() throws Exception {
+
+        List<Tuple> result = queryFactory
+                .select(member, team)
+                .from(member)
+                .join(member.team, team)
+                .where(team.name.eq("teamA"))
+//                .join(member.team, team)
+//                .on(team.name.eq("teamA"))
+                .fetch();
+
+        for (Tuple tuple : result) {
+            System.out.println("tuple = " + tuple);
+        }
+    }
+
+    /**
+     * 조인 대상을 필터링 해서 가져와야 하는 경우
+     *  - leftJoin을 사용할 경우, on 절을 통해 조인 대상을 필터링 해야 한다.
+     *  - innerJoin을 사용할 경우, where 절에서 필터링 할 수 있으며, on 절보다 깔끔하게 사용할 수 있다.
+     */
+
+
+
+    /**
+     * 연관관계가 없는 엔티티의 외부 조인(세타 조인)
+     * 회원의 이름이 팀 이름과 같은 대상 외부 조인
+     */
+    @Test
+    public void join_on_no_relation() throws Exception { // 막 조인 JPA강의 -> JPQL
+
+        em.persist(new Member("teamA"));
+        em.persist(new Member("teamB"));
+        em.persist(new Member("teamC"));
+
+        List<Tuple> result = queryFactory
+                .select(member, team)
+                .from(member)
+                .leftJoin(team).on(member.username.eq(team.name))
+//                .join(team).on(member.username.eq(team.name)) // 결과의 차이를 이해하자
+                .fetch();
+
+        for (Tuple tuple : result) {
+            System.out.println("tuple = " + tuple);
+        }
+
+    }
+
 
 }
